@@ -3,8 +3,17 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 gem 'rails_admin'
-gem 'fullcalendar_engine'
+# gem 'fullcalendar_engine'
 gem 'devise'
+
+# gem 'axlsx_rails'
+gem 'bootstrap-sass'
+gem 'capistrano', '~> 2'
+gem 'capistrano-ext'
+# gem 'google_drive'
+gem 'nokogiri'
+gem 'rvm-capistrano'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
@@ -32,6 +41,17 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+
+group :development, :test do
+  # gem 'byebug'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
+  gem 'factory_girl_rails'
+  gem 'capybara', '2.1.0'
+  gem 'faye-websocket', '0.4.7'
+  gem 'poltergeist', '~> 1.2'
 end
 
 # Use ActiveModel has_secure_password

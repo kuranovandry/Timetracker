@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428110317) do
+ActiveRecord::Schema.define(version: 20140508085026) do
+
+  create_table "cases", force: true do |t|
+    t.string   "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cases", ["number"], name: "index_cases_on_number"
 
   create_table "developers", force: true do |t|
     t.datetime "created_at"
@@ -64,6 +72,16 @@ ActiveRecord::Schema.define(version: 20140428110317) do
     t.string   "logo_url"
     t.string   "manager",    limit: 100, null: false
     t.integer  "foundedd"
+  end
+
+  create_table "tickets", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "case_id"
+    t.date     "date"
+    t.text     "description"
+    t.float    "spent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

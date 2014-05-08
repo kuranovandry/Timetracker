@@ -1,0 +1,21 @@
+<% ticket_number = "#{@ticket.case.number}_#{@ticket.date}" %>
+<% provide(:title, ticket_number) %>
+<h1>
+  <%= ticket_number %>
+</h1>
+<div class="row">
+  <%= "Attorney: #{@ticket.user.name}" %>
+</div>
+<div class="row">
+  <%= "Client: #{@ticket.case.number}" %>
+</div>
+<div class="row">
+  <%= "Date: #{@ticket.date}" %>
+</div>
+<div class="row">
+  <%= "Description: #{@ticket.description}" %>
+</div>
+<div class="row">
+  <%= "Time spent: #{@ticket.spent} hrs" %>
+</div>
+<%= link_to 'Edit', edit_ticket_path %>
