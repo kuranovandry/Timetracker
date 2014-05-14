@@ -5,7 +5,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :name, :limit => 50
       t.string :logo_url, :limit => 255
       t.string :manager, :limit => 100, :null => false
-      t.integer :foundedd
+      t.date :founded
     end
   end
 end

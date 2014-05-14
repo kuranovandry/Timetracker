@@ -5,8 +5,17 @@ class Developer < ActiveRecord::Base
 
   belongs_to :team, :inverse_of => :developer
 	belongs_to :project, :inverse_of => :developer
-	belongs_to :event
+  has_many :events_developers
+  has_many :events, class_name:"FullcalendarEngine::Event", through: :events_developers
   
+  rails_admin do
+    nestable_list true
+    list do
+      field :name
+      field :number
+    end
+  end
+
   def draft_id
     self.draft.try :id
   end

@@ -5,10 +5,28 @@ module FullcalendarEngine
 
     validates :title, :description, :presence => true
     validate :validate_timings
-
-    has_one :developer
+    has_many :events_developers
+    has_many :developers, through: :events_developers
     belongs_to :event_series
 
+    rails_admin do
+      nestable_list true
+      list do
+        field :title
+        field :starttime
+        field :all_day
+      end
+
+      edit do
+        field :title
+        field :starttime
+        field :endtime
+        field :all_day
+        field :description
+        field :event_series
+        field :developers
+      end
+    end
     REPEATS = {
       :no_repeat => "Does not repeat",
       :days      => "Daily",

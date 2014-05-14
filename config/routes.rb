@@ -4,11 +4,10 @@ Timetracker::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount FullcalendarEngine::Engine => "/calendar"
-
   # root to: "rails_admin/main#dashboard"
   root to: "fullcalendar_engine/events#index"
+
   # root :to => 'events#index'
-  resources :tickets
   
   resources :events do 
     collection do 

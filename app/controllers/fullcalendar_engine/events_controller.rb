@@ -118,4 +118,3 @@ module FullcalendarEngine
     end
   end
 end
-end

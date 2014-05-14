@@ -5,4 +5,8 @@ class Project < ActiveRecord::Base
   belongs_to :team
   has_many :developer, :inverse_of => :project
   
+  rails_admin do
+    nestable_list true
+  end
+
 end

@@ -1,9 +1,7 @@
-# This migration comes from fullcalendar_engine (originally 20131203105320)
 class CreateFullcalendarEngineEvents < ActiveRecord::Migration
   def change
     create_table :fullcalendar_engine_events do |t|
       t.string :title
-      t.integer :developer_id
       t.datetime :starttime, :endtime
       t.boolean :all_day, :default => false
       t.text :description
@@ -11,5 +9,6 @@ class CreateFullcalendarEngineEvents < ActiveRecord::Migration
       t.timestamps
     end
     add_index :fullcalendar_engine_events, :event_series_id
+    # add_index :fullcalendar_engine_events, :developer_id
   end
 end
