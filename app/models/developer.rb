@@ -7,20 +7,26 @@ class Developer < ActiveRecord::Base
 	belongs_to :project, :inverse_of => :developer
   has_many :events_developers
   has_many :events, class_name:"FullcalendarEngine::Event", through: :events_developers
-  
+
+
   rails_admin do
     nestable_list true
     list do
       field :name
       field :number
+      field :team
+      field :position
+      field :retired
     end
-  end
 
-  def draft_id
-    self.draft.try :id
-  end
-  
-  def draft_id=(id)
-    self.draft = Project.find_by_id(id)
+    edit do
+        field :team
+        field :name
+        field :position
+        field :number
+        field :retired
+        field :notes
+        field :events
+      end
   end
 end

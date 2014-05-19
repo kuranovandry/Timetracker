@@ -1,6 +1,5 @@
 module FullcalendarEngine
   class Event < ActiveRecord::Base
-
     attr_accessor :period, :frequency, :commit_button
 
     validates :title, :description, :presence => true
@@ -14,7 +13,7 @@ module FullcalendarEngine
       list do
         field :title
         field :starttime
-        field :all_day
+        field :endtime
       end
 
       edit do
@@ -34,7 +33,7 @@ module FullcalendarEngine
       :months    => "Monthly",
       :years     => "Yearly"
     }
-    
+
     def validate_timings
       if (starttime >= endtime) and !all_day
         errors[:base] << "Start Time must be less than End Time"
@@ -43,7 +42,7 @@ module FullcalendarEngine
 
     def update_events(events, event)
       events.each do |e|
-        begin 
+        begin
           old_start_time, old_end_time = e.starttime, e.endtime
           e.attributes = event
           if event_series.period.downcase == 'monthly' or event_series.period.downcase == 'yearly'

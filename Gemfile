@@ -8,7 +8,8 @@ gem 'devise'
 gem 'pry'
 gem 'paperclip'
 gem 'rails_admin_nestable'
-
+gem "rails_best_practices"
+gem "mailcatcher"
 # gem 'axlsx_rails'
 gem 'bootstrap-sass'
 gem 'capistrano', '~> 2'
