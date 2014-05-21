@@ -4,10 +4,9 @@ Timetracker::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount FullcalendarEngine::Engine => "/calendar"
-  root to: "devise#index"
-  # root to: "fullcalendar_engine/events#index"
-  # root :to => 'events#index'
-  
+  # root to: "devise#index"
+  root to: redirect("/admin")
+
   resources :events do 
     collection do 
       get :get_events

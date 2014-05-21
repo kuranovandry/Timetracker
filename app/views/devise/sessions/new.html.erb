@@ -35,9 +35,9 @@
                   <%= f.label :password %>
                 </td>
                 <td align="center" valign="middle" rowspan="3" width="90" class="lb pad10">
-                  <span class="th35">
+                  
                     <%= f.submit 'Go', :class => "white-button"%>
-                  </span>
+                  
                 </td>
               </tr>
               <tr>
@@ -52,7 +52,7 @@
               <tr>
                 <td class="white-text">
                   <% if devise_mapping.rememberable? -%>
-                    <div> <%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                    <div><%= f.check_box :remember_me%>  Remember me?</div>
                   <% end -%>
                 </td>
               </tr>
