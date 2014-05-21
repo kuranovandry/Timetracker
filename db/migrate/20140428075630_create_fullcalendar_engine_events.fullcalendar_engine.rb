@@ -9,6 +9,5 @@ class CreateFullcalendarEngineEvents < ActiveRecord::Migration
       t.timestamps
     end
     add_index :fullcalendar_engine_events, :event_series_id
-    # add_index :fullcalendar_engine_events, :developer_id
   end
 end

@@ -10,18 +10,21 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <nav class="navbar-inner">
     <div class="container">
+
       <%= render 'layouts/navigation' %>
+
     </div>
   </nav>
 </header>
-  <% if notice %>
-  	<p class="alert alert-success"><%= notice %></p>
-	<% end %>
+  <ul class="form">
+    <% if notice %>
+    	<p class="alert alert-success"><%= notice %></p>
+  	<% end %>
 
-	<% if alert %>
-	  <p class="alert alert-danger"><%= alert %></p>
-	<% end %>
-
+  	<% if alert %>
+  	  <p class="alert alert-danger"><%= alert %></p>
+  	<% end %>
+  </ul>
 
 <%= yield %>
 

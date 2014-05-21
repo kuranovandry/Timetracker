@@ -5,6 +5,3 @@ require File.expand_path('../config/application', __FILE__)
 
 Timetracker::Application.load_tasks
 
-task :promote_admin => :environment do
-  User.first.update_attribute('admin', 'admin')
-end
