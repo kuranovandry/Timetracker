@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   rails_admin do
     nestable_list true
+
     list do
       field :email
       field :current_sign_in_at

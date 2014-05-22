@@ -1,4 +1,8 @@
 class Developer < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 	validates_presence_of(:name)
   validates_numericality_of(:number, :only_integer => true)
   validates_uniqueness_of(:number, :scope => :team_id, :message => "There is already a developer with that number on this team")
@@ -28,5 +32,8 @@ class Developer < ActiveRecord::Base
         field :notes
         field :events
       end
+  end
+  def position_enum
+    ['Trainee', 'Junior', 'Middle', 'Senior']
   end
 end
