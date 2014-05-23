@@ -1,11 +1,13 @@
 class Developer < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	validates_presence_of(:name)
-  validates_numericality_of(:number, :only_integer => true)
-  validates_uniqueness_of(:number, :scope => :team_id, :message => "There is already a developer with that number on this team")
+  validates_presence_of(:surname)
+  validates_presence_of(:position)
+
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  do_not_validate_attachment_file_type :photo
 
   belongs_to :team, :inverse_of => :developer
 	belongs_to :project, :inverse_of => :developer
@@ -17,20 +19,24 @@ class Developer < ActiveRecord::Base
     nestable_list true
     list do
       field :name
-      field :number
-      field :team
+      field :surname
       field :position
       field :retired
+      field :team
+      field :project
     end
 
     edit do
-        field :team
         field :name
+        field :surname
         field :position
-        field :number
         field :retired
-        field :notes
+        field :team
+        field :project
         field :events
+        field :notes
+        field :my_project
+        field :photo
       end
   end
   def position_enum

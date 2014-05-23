@@ -4,8 +4,13 @@ module FullcalendarEngine
 
     validates :title, :description, :presence => true
     validate :validate_timings
+
     has_many :events_developers
     has_many :developers, through: :events_developers
+    
+    has_many :events_team_leaders
+    has_many :team_leaders, through: :events_team_leaders
+    
     belongs_to :event_series
 
     rails_admin do

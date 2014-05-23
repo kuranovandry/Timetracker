@@ -11,18 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521150733) do
+ActiveRecord::Schema.define(version: 20140522112342) do
 
   create_table "developers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
-    t.integer  "team_id"
     t.string   "name",                   limit: 100,                 null: false
-    t.string   "position"
-    t.integer  "number",                                             null: false
+    t.string   "surname",                limit: 100,                 null: false
+    t.string   "position",                                           null: false
     t.boolean  "retired",                            default: false
+    t.integer  "team_id"
+    t.integer  "project_id"
     t.text     "notes"
+    t.string   "my_project"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "deleted_at"
     t.string   "email",                              default: "",    null: false
     t.string   "encrypted_password",                 default: "",    null: false
     t.string   "reset_password_token"
@@ -37,6 +42,13 @@ ActiveRecord::Schema.define(version: 20140521150733) do
 
   add_index "developers", ["email"], name: "index_developers_on_email", unique: true
   add_index "developers", ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true
+
+  create_table "evenets_team_leaders", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "team_leader_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events_developers", force: true do |t|
     t.integer  "event_id"
@@ -74,6 +86,18 @@ ActiveRecord::Schema.define(version: 20140521150733) do
     t.integer  "team_id"
     t.date     "date"
     t.text     "notes"
+  end
+
+  create_table "team_leaders", force: true do |t|
+    t.string   "name",               limit: 100, null: false
+    t.string   "surname",            limit: 100, null: false
+    t.integer  "team_id"
+    t.integer  "project_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", force: true do |t|
