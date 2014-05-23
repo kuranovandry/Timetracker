@@ -2,7 +2,7 @@ require_dependency 'fullcalendar_engine/application_controller'
 
 module FullcalendarEngine
   class EventsController < ApplicationController
-    before_filter :authenticate_user!, :authenticate_admin!
+    before_filter :authenticate_user!
 
     layout FullcalendarEngine::Configuration['layout'] || 'application'
 

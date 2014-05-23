@@ -28,8 +28,5 @@
       </li>
   <% end %>
 
-  <% if user_signed_in? %>
-    <%= link_to current_user.email, products_path, class: "btn btn-primary pull-right"%>
-    <%= link_to image_tag('12.png', size: "38x38"), cart_path(session[:cart_id]) %> &nbsp;&nbsp;&nbsp;&nbsp;
-  <% end %>
+ 
 </ul>
